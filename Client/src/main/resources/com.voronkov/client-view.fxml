@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="632.0" style="-fx-background-color: #F0F2F3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.voronkov.controllers.ClientControllerStorage">
+    <right>
+        <AnchorPane fx:id="serverListPane" minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="220.0" BorderPane.alignment="CENTER">
+            <children>
+                <ListView fx:id="serverFileView" layoutX="-39.0" layoutY="31.0" prefHeight="333.0" prefWidth="139.0" style="-fx-background-color: #F0F2F3; -fx-border-color: #71B1C5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                <Label alignment="CENTER" contentDisplay="TOP" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="214.0" stylesheets="@style.css" text="Server:" textFill="#003366" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font name="Courier New" size="16.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="labels-round-right" />
+                        <String fx:value="label_normal_font" />
+                        <String fx:value="labels" />
+                    </styleClass>
+                </Label>
+            </children>
+        </AnchorPane>
+    </right>
+    <center>
+        <HBox fx:id="clientListPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="393.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0">
+                    <children>
+                        <VBox alignment="TOP_RIGHT" prefHeight="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <AnchorPane prefHeight="49.0">
+                                    <children>
+                                        <Label id="clientRootLabel" fx:id="clientRoot" contentDisplay="TOP" layoutX="-10.0" layoutY="2.0" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" prefWidth="292.0" stylesheets="@style.css" text=" Client Root:" textFill="#003366" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <font>
+                                                <Font name="Courier New" size="16.0" />
+                                            </font>
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                            <styleClass>
+                                                <String fx:value="labels-round-left" />
+                                                <String fx:value="labels" />
+                                                <String fx:value="label_normal_font" />
+                                            </styleClass>
+                                        </Label>
+                                        <Button mnemonicParsing="false" styleClass="transparent" stylesheets="@style.css" />
+                                        <ImageView fitHeight="17.0" fitWidth="63.0" layoutX="356.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="8.0">
+                                            <image>
+                                                <Image url="@img/free-icon-font-settings-3917035.png" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </AnchorPane>
+                                <Label fx:id="syncLabel" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="386.0" stylesheets="@style.css" text=" Файлы синхронизированы" VBox.vgrow="ALWAYS">
+                                    <styleClass>
+                                        <String fx:value="labels" />
+                                        <String fx:value="label-small_font" />
+                                    </styleClass>
+                                </Label>
+                                <ListView fx:id="clientFileView" onDragDropped="#onDragDropped" onDragOver="#onDragOver" onMouseClicked="#onClientMouseClicked" onMouseDragExited="#onDragExited" style="-fx-background-color: #F0F2F3; -fx-border-color: #71B1C5;">
+                                    <contextMenu>
+                                        <ContextMenu>
+                                            <items>
+                                                <MenuItem fx:id="mkdirMenu" mnemonicParsing="false" onAction="#onMkdir" text="Каталог" />
+                                                <MenuItem fx:id="dropMenu" mnemonicParsing="false" onAction="#onDrop" text="Удалить" />
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
+                                </ListView>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+                <Button fx:id="expandServerList" alignment="CENTER" mnemonicParsing="false" onAction="#onCollapseExpandPress" prefHeight="400.0" prefWidth="18.0" styleClass="buttons-style" stylesheets="@style.css" text="&lt;" textAlignment="CENTER" />
+            </children>
+        </HBox>
+    </center>
+</BorderPane>
